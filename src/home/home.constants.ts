@@ -19,7 +19,7 @@ export const HeroContent = {
   ctaLabel: "Start Exploring Now",
   title: "Discover the Packages for the web, with PackageNest",
   subTitle:
-    "Whether you're building a simple website or a complex web application, PackageNest offers you a vast library of high-quality front-end packages to supercharge your development. With our intuitive search and easy installation process, finding and integrating the right tools into your project has never been easier.",
+    "Whether you're building a simple website or a complex web application, PackageNest offers you a vast library of high-quality web packages to supercharge your development. With our intuitive search and easy installation process, finding and integrating the right tools into your project has never been easier.",
 };
 
 export const FeaturesContent = [

@@ -50,6 +50,11 @@ export const SearchErrorHandleObject: SearchErrorHandle = {
 export const ITEMS_PER_PAGE =
   parseInt(import.meta.env.VITE_ITEMS_PER_PAGE, 10) || 5;
 
+/**
+ * NOTE:
+ * The API returns errors when the 'page' value exceeds '300'.
+ * To prevent these errors, we are hardcoding the value not to go beyond '300'.
+ */
 export const MAX_PAGE_ALLOWED =
   parseInt(import.meta.env.VITE_MAX_PAGE_ALLOWED, 10) || 300;
 
