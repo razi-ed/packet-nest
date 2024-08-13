@@ -37,6 +37,7 @@
 .AppLayout-sider {
   background-color: #06284105 !important;
   border-right: 1px solid rgba(6, 40, 65, 0.06);
+  padding-top: 16px;
 }
 
 .AppLayout-nav-menu {

@@ -23,3 +23,29 @@
 .ResultSortSelect-element-container {
   width: 75%;
 }
+
+@media screen and (max-width: 576px) {
+  .ResultSortSelect-container {
+    flex-direction: column;
+  }
+
+  .ResultSortSelect-helpertext-container {
+    width: 100%;
+    margin-bottom: 12px;
+  }
+
+  .ResultSortSelect-select-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .ResultSortSelect-label-container {
+    width: 25%;
+  }
+
+  .ResultSortSelect-element-container {
+    width: 75%;
+  }
+}

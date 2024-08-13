@@ -1,5 +1,5 @@
 import {
-  ForkOutlined,
+  ApartmentOutlined,
   HistoryOutlined,
   RocketOutlined,
   StarOutlined,
@@ -68,17 +68,17 @@ export default function ListItem(props: IListItemProps) {
       <aside className={styles["ListItem-stats"]}>
         <div
           className={styles["ListItem-stats-entry"]}
-          title="Package repo owner"
+          title="Github star count"
         >
           <StarOutlined />
           {itemData.stars}
         </div>
         <div
           className={styles["ListItem-stats-entry"]}
-          title="Package repo owner"
+          title="Dependent repos count"
         >
-          <ForkOutlined />
-          {itemData.forks}
+          <ApartmentOutlined />
+          {itemData.dependent_repos_count}
         </div>
         <div
           className={styles["ListItem-stats-entry"]}
@@ -96,7 +96,7 @@ export default function ListItem(props: IListItemProps) {
         </div>
         <div
           className={styles["ListItem-stats-entry"]}
-          title="Dependent repos count"
+          title="Latest stable release"
         >
           <HistoryOutlined />
           {convertToRelativeDuration(

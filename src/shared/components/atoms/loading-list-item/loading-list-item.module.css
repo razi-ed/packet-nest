@@ -8,7 +8,8 @@
 .LoadingListItem-stats {
   display: flex;
   align-items: center;
-  gap: 0 12px;
+  flex-wrap: wrap;
+  gap: 4px 16px;
   margin-top: 10px;
 }
 

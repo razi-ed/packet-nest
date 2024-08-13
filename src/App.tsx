@@ -61,6 +61,7 @@ export default function App() {
           token: {
             colorPrimary: "#005eae",
             fontFamily: "Epilogue, sans-serif",
+            fontSize: 16,
           },
         }}
       >
