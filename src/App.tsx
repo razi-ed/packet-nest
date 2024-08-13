@@ -7,6 +7,7 @@ import { ConfigProvider } from "antd";
 import AppLayout from "@shared/components/organisms/app-layout";
 import HomeRouteObject from "./home";
 import PackageRoutes from "./package";
+import Error from "@shared/components/molecules/error";
 /* ***components imports above this***  */
 
 /* ***libs, utils, custom-hooks imports above this***  */
@@ -38,6 +39,12 @@ export default function App() {
         path: "/",
         element: <AppLayout />,
         children: [HomeRouteObject, PackageRoutes],
+        errorElement: (
+          <Error
+            code={404}
+            error={"The page you are looking for does not exist."}
+          />
+        ),
       },
     ]);
   }, []);
