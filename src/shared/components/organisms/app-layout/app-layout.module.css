@@ -9,7 +9,6 @@
   background-color: #fff;
   display: flex;
   align-items: center;
-  gap: 0 4px;
 }
 
 .AppLayout-appname {
@@ -17,8 +16,17 @@
 }
 
 .AppLayout-logo-container {
-  height: 48px;
-  width: 48px;
+  height: 32px;
+  width: 32px;
+  display: flex;
+  align-items: center;
+}
+
+.AppLayout-logo-appname-container {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0 4px;
 }
 
 .AppLayout-logo {

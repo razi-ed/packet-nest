@@ -1,4 +1,4 @@
-import { createElement, useCallback, useMemo } from "react";
+import { createElement, MouseEventHandler, useCallback, useMemo } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { Layout, Menu, Typography } from "antd";
 
@@ -43,6 +43,7 @@ export default function AppLayout() {
     },
     [navigate]
   );
+
   /* ***memoised functions initializations above this***  */
 
   const navItems = useMemo(() => {
@@ -61,22 +62,34 @@ export default function AppLayout() {
   }, []);
   /* ***memoised variables initializations above this***  */
 
+  const onLogoAppNameContainerClick: MouseEventHandler<HTMLDivElement> = (
+    e
+  ) => {
+    e.stopPropagation();
+    navigate(HomeNavObject.path);
+  };
   /* ***internal declarations, if necessary, above this***  */
 
   /* ***conditional renderings above this***  */
   return (
     <Layout className={styles["AppLayout-container"]}>
       <Header className={styles["AppLayout-header"]}>
-        <div className={styles["AppLayout-logo-container"]}>
-          <img
-            src={Logo}
-            alt={`${APP_NAME} logo`}
-            className={styles["AppLayout-logo"]}
-          />
+        <div
+          role="button"
+          onClick={onLogoAppNameContainerClick}
+          className={styles["AppLayout-logo-appname-container"]}
+        >
+          <div className={styles["AppLayout-logo-container"]}>
+            <img
+              src={Logo}
+              alt={`${APP_NAME} logo`}
+              className={styles["AppLayout-logo"]}
+            />
+          </div>
+          <Typography.Title level={3} className={styles["AppLayout-appname"]}>
+            {APP_NAME}
+          </Typography.Title>
         </div>
-        <Typography.Title level={2} className={styles["AppLayout-appname"]}>
-          {APP_NAME}
-        </Typography.Title>
       </Header>
       <Layout>
         <Sider
