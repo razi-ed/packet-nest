@@ -9,6 +9,7 @@ const apiBaseURL = process.env.VITE_API_BASE_URL;
 const itemsPerPage = process.env.VITE_ITEMS_PER_PAGE;
 const librariesBaseURL = process.env.LIBRARIES_BASE_URL;
 const librariesAPIKey = process.env.LIBRARIES_API_KEY;
+const port = parseInt(process.env.PORT || "3000", 10);
 
 if (!apiBaseURL || !librariesBaseURL || !librariesAPIKey || !itemsPerPage) {
   throw new Error(
@@ -26,6 +27,8 @@ export default defineConfig({
     },
   },
   server: {
+    port,
+    open: true,
     proxy: {
       [apiBaseURL]: {
         target: librariesBaseURL, // Replace with your API server
