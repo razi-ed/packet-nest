@@ -1,0 +1,25 @@
+.ResultSortSelect-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.ResultSortSelect-helpertext-container {
+  width: 40%;
+}
+
+.ResultSortSelect-select-container {
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ResultSortSelect-label-container {
+  width: 25%;
+}
+
+.ResultSortSelect-element-container {
+  width: 75%;
+}

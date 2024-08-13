@@ -1,15 +1,16 @@
-import { useMemo } from 'react';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { useMemo } from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { StyleProvider } from "@ant-design/cssinjs";
+import { ConfigProvider } from "antd";
 /* ***package imports above this***  */
 
-import AppLayout from './shared/components/organisms/app-layout';
+import AppLayout from "@shared/components/organisms/app-layout";
+import HomeRouteObject from "./home";
+import PackageRoutes from "./package";
 /* ***components imports above this***  */
 
 /* ***libs, utils, custom-hooks imports above this***  */
 
-/* ***data(redux) imports above this***  */
-
-import PackageRoutes from './package';
 /* ***configs imports above this***  */
 
 /* ***enums, consts imports above this***  */
@@ -22,8 +23,6 @@ import PackageRoutes from './package';
 
 export default function App() {
   /* ***props decustructions above this***  */
-
-  /* ***data selectors above this***  */
 
   /* ***hooks initializations above this***  */
 
@@ -38,18 +37,28 @@ export default function App() {
       {
         path: "/",
         element: <AppLayout />,
-        children: [
-          PackageRoutes
-        ]
+        children: [HomeRouteObject, PackageRoutes],
       },
-    ])
+    ]);
   }, []);
-
   /* ***memoised variables initializations above this***  */
 
   /* ***internal declarations, if necessary, above this***  */
 
   /* ***conditional renderings above this***  */
 
-  return <RouterProvider router={routeList}/>
+  return (
+    <StyleProvider>
+      <ConfigProvider
+        theme={{
+          token: {
+            colorPrimary: "#005eae",
+            fontFamily: "Epilogue, sans-serif",
+          },
+        }}
+      >
+        <RouterProvider router={routeList} />
+      </ConfigProvider>
+    </StyleProvider>
+  );
 }

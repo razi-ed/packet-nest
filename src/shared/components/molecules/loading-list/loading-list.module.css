@@ -1,0 +1,10 @@
+.LoadingList-container {
+  width: 100%;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px 0;
+
+  max-height: 100%;
+  overflow-y: auto;
+}

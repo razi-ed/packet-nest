@@ -1,17 +1,10 @@
-import { moduleName } from "./home.enum";
-import RouteComponent from "./home.routes";
-export { default as HomeReducer } from "./home.data";
+import HomePage from "./home.page";
 
-const linkLabel = "Home";
-const routePath = `/${moduleName}`;
-const linkLabelKey = "ADD_I18N_KEY_HERE"; // for layout side nav
-const linkKey = `${moduleName}`;
+import HomeNavObject from "./home.constants";
 
-export const HomeRouteObject = {
-  routePath,
-  linkLabel,
-  linkLabelKey,
-  linkKey,
+const HomeRouteObject = {
+  path: HomeNavObject.routePath,
+  element: <HomePage />,
 };
 
-export default RouteComponent;
+export default HomeRouteObject;

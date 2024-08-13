@@ -1,9 +1,9 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet } from "react-router-dom";
 
-import ListPage from './list';
+import SearchPage from "./search";
 
-import PackageNavObject from './package.enum';
-import ListNavObject from './list/list.enum';
+import PackageNavObject from "./package.constants";
+import ListNavObject from "./search/search.constants";
 
 const PackageRouteObject = {
   path: PackageNavObject.routePath,
@@ -11,9 +11,9 @@ const PackageRouteObject = {
   children: [
     {
       path: ListNavObject.routePath,
-      element: <ListPage />
-    }
-  ]
+      element: <SearchPage />,
+    },
+  ],
 };
 
-export default PackageRouteObject 
+export default PackageRouteObject;

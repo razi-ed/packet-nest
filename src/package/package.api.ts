@@ -1,7 +1,7 @@
-import { mainServiceAuthedV1Client } from "@/modules/shared/utils/http.clients";
+import { librariesServiceOpenClient } from "@shared/libs/http-client";
 
-export function fetchPackageList() {
-  return mainServiceAuthedV1Client.get("/");
+export function fetchPackageList(searchParams: URLSearchParams) {
+  return librariesServiceOpenClient.get("/search", { params: searchParams });
 }
 
 export default fetchPackageList;
