@@ -1,13 +1,18 @@
 import { SortValues } from "@shared/types";
+import { ExceptionStatusType } from "antd/es/result";
 
 export interface SortOption {
   value: SortValues;
   label: string;
 }
 
-export interface IPackage {
-  id: number;
-}
+export type SearchErrorHandle = Record<
+  ExceptionStatusType | number,
+  {
+    errStatus: ExceptionStatusType;
+    errMessage: string;
+  }
+>;
 
 export interface Package {
   description: string;
@@ -41,32 +46,6 @@ export interface IPackageSearchParams {
   q?: string;
   page?: number;
   per_page?: number;
-  // sort?: "stars" | "dependent_repos_count" | "rank";
   sort?: string;
   language?: string;
 }
-
-// interface IRoleToSkillMap {
-//   [key: string]: Pick<IRole, 'skills'>;
-// }
-
-// export type TNewRole = Omit<IRole, 'id' | 'status' | 'isco_code' | 'created_at' | 'is_verified'>;
-// export type TRolePrerequesites = Pick<IRole, 'industry' | 'department' | 'position'>;
-// export interface TSkillsToRoleFormPrerequesites extends TRolePrerequesites {
-//   roleToSkillsMap?: IRoleToSkillMap;
-// }
-
-export interface IDataInteractionStatus {
-  mutationStatus: string;
-  mutationResponse?: string;
-}
-
-export interface IPackageState {
-  list: IPackage[];
-  queryStatus: string;
-  dataInteractionStatuses: IDataInteractionStatus;
-}
-
-// export type TRoleUpdateResponse = IGenericHttpResponse<Pick<IRole, 'id' | 'role_id'>>;
-
-// export type TRoleFormData = TNewRole & { ml_suggested: boolean };

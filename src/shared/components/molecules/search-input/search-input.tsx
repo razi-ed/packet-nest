@@ -18,14 +18,14 @@ interface ISearchInputProps {
   onChange: React.ChangeEventHandler<HTMLInputElement>;
   placeholder?: string;
   name?: string;
-  defaultValue?: string;
+  value?: string;
   id?: string;
 }
 
 /* ***local declarations above this***  */
 
 export default function SearchInput(props: ISearchInputProps) {
-  const { name, placeholder, id, defaultValue, onChange } = props;
+  const { name, placeholder, id, value, onChange } = props;
   /* ***props decustructions above this***  */
 
   /* ***data selectors above this***  */
@@ -52,7 +52,7 @@ export default function SearchInput(props: ISearchInputProps) {
       allowClear
       size="large"
       suffix={<SearchOutlined />}
-      defaultValue={defaultValue}
+      value={value}
       id={id}
       autoComplete="off"
     />

@@ -1,9 +1,6 @@
 import React, { useCallback } from "react";
 import { useSearchParams } from "react-router-dom";
-import {
-  SearchParamsDefaultValues,
-  SearchParamsKeys,
-} from "@package/search/search.constants";
+import { SearchParamsKeys } from "@package/search/search.constants";
 /* ***package imports above this***  */
 
 import SearchInput from "@shared/components/molecules/search-input";
@@ -39,14 +36,9 @@ export default function PackageSearchInput() {
         setSearchParams((searchParams) => {
           const currentSearchValue = e.target.value;
           if (currentSearchValue) {
-            searchParams.delete("language");
             searchParams.set(SearchParamsKeys.QUERY, currentSearchValue);
           } else {
             searchParams.delete(SearchParamsKeys.QUERY);
-            searchParams.set(
-              SearchParamsKeys.LANGUAGE,
-              SearchParamsDefaultValues.LANGUAGE
-            );
           }
           return searchParams;
         });
@@ -67,7 +59,7 @@ export default function PackageSearchInput() {
         name={SearchParamsKeys.QUERY}
         onChange={handleSearchInputChange}
         placeholder="Search Package"
-        defaultValue={searchParams.get(SearchParamsKeys.QUERY) || ""}
+        value={searchParams.get(SearchParamsKeys.QUERY) || ""}
       />
     </aside>
   );

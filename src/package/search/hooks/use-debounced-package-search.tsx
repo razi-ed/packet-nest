@@ -1,7 +1,7 @@
 import { useReducer, useEffect, useCallback, useRef } from "react";
-import { AxiosResponseHeaders } from "axios";
+import { AxiosError, AxiosResponseHeaders } from "axios";
 
-import { DataFetchStore } from "@shared/types";
+import { DataFetchStore, SearchErrorResponse } from "@shared/types";
 import { RequestStatus } from "@shared/constants";
 import fetchPackageList from "@package/package.api";
 
@@ -9,9 +9,17 @@ type Action<T> =
   | { type: "FETCH_INIT" }
   | {
       type: "FETCH_SUCCESS";
-      payload: { data: T; headers: Partial<AxiosResponseHeaders> };
+      payload: {
+        data: T;
+        headers: Partial<AxiosResponseHeaders>;
+        code: number;
+      };
     }
-  | { type: "FETCH_FAILURE"; error: string };
+  | {
+      type: "FETCH_FAILURE";
+      error: DataFetchStore["error"];
+      code: DataFetchStore["code"];
+    };
 
 function dataFetchReducer<T>(
   state: DataFetchStore<T>,
@@ -30,6 +38,7 @@ function dataFetchReducer<T>(
         status: RequestStatus.SUCCEEDED,
         data: action.payload.data,
         headers: action.payload.headers,
+        code: action.payload.code,
       };
     case "FETCH_FAILURE":
       return {
@@ -38,6 +47,7 @@ function dataFetchReducer<T>(
         error: action.error,
         data: null,
         headers: null,
+        code: action.code,
       };
     default:
       throw new Error("Unhandled action type");
@@ -53,6 +63,7 @@ const useDebouncedPackageSearch = <T,>(
     headers: null,
     status: RequestStatus.IDLE,
     error: null,
+    code: null,
   });
 
   const debounceTimeout = useRef<number | null>(null);
@@ -64,11 +75,19 @@ const useDebouncedPackageSearch = <T,>(
       .then((response) => {
         dispatch({
           type: "FETCH_SUCCESS",
-          payload: { data: response.data, headers: response.headers },
+          payload: {
+            data: response.data,
+            headers: response.headers,
+            code: response.status,
+          },
         });
       })
-      .catch((err) => {
-        dispatch({ type: "FETCH_FAILURE", error: err.message });
+      .catch((err: AxiosError<SearchErrorResponse>) => {
+        dispatch({
+          type: "FETCH_FAILURE",
+          error: err.response?.data?.error || err.message,
+          code: err.response?.status || null,
+        });
       });
   }, [searchParams]);
 
@@ -93,6 +112,7 @@ const useDebouncedPackageSearch = <T,>(
     headers: state.headers,
     status: state.status,
     error: state.error,
+    code: state.code,
   };
 };
 

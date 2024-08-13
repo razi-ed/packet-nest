@@ -13,6 +13,7 @@ import Pagination from "@shared/components/molecules/pagination/pagination";
 import { RequestStatus } from "@shared/constants";
 import {
   ITEMS_PER_PAGE,
+  MAX_TOTAL_ITEMS_ALLOWED,
   SearchParamsDefaultValues,
   SearchParamsKeys,
 } from "@package/search/search.constants";
@@ -46,7 +47,7 @@ export default function ResultListPagination(props: ResultListPaginationProps) {
     useCallback(
       (newPage) => {
         setSearchParams((searchParams) => {
-          searchParams.set("page", newPage.toString());
+          searchParams.set(SearchParamsKeys.PAGE, newPage.toString());
           return searchParams;
         });
       },
@@ -68,7 +69,11 @@ export default function ResultListPagination(props: ResultListPaginationProps) {
       default:
         return (
           <Pagination
-            totalItems={totalItems}
+            totalItems={
+              totalItems > MAX_TOTAL_ITEMS_ALLOWED
+                ? MAX_TOTAL_ITEMS_ALLOWED
+                : totalItems
+            }
             currentPage={parseInt(
               searchParams.get(SearchParamsKeys.PAGE) ||
                 SearchParamsDefaultValues.PAGE,

@@ -64,35 +64,6 @@ export default function AppLayout() {
   /* ***internal declarations, if necessary, above this***  */
 
   /* ***conditional renderings above this***  */
-
-  // return (
-  //   <Layout className={styles["AppLayout-container"]}>
-  //     <Sider
-  //       breakpoint="lg"
-  //       collapsedWidth="0"
-  //       className={styles["AppLayout-sider"]}
-  //     >
-  //       <div className="demo-logo-vertical" />
-  //       <Menu
-  //         theme="light"
-  //         mode="inline"
-  //         defaultSelectedKeys={[pathname]}
-  //         items={navItems}
-  //         className={styles["AppLayout-nav-menu"]}
-  //         onClick={onNavItemClick}
-  //       />
-  //     </Sider>
-  //     <Layout>
-  //       <Header className={styles["AppLayout-header"]} />
-  //       <Content className={styles["AppLayout-content"]}>
-  //         <Outlet />
-  //       </Content>
-  //       <Footer>
-  //         Ant Design ©{new Date().getFullYear()} Created by Ant UED
-  //       </Footer>
-  //     </Layout>
-  //   </Layout>
-  // );
   return (
     <Layout className={styles["AppLayout-container"]}>
       <Header className={styles["AppLayout-header"]}>
@@ -117,7 +88,7 @@ export default function AppLayout() {
           <Menu
             theme="light"
             mode="inline"
-            defaultSelectedKeys={[pathname]}
+            selectedKeys={[pathname]}
             items={navItems}
             className={styles["AppLayout-nav-menu"]}
             onClick={onNavItemClick}

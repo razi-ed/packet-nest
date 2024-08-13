@@ -31,10 +31,9 @@ export default function SearchPage() {
   /* ***props decustructions above this***  */
 
   const [searchParams] = useSearchParams();
-  const { data, status, headers, error } = useDebouncedPackageSearch<Package[]>(
-    searchParams,
-    SEARCH_DEBOUNCE_DELAY
-  );
+  const { data, status, headers, error, code } = useDebouncedPackageSearch<
+    Package[]
+  >(searchParams, SEARCH_DEBOUNCE_DELAY);
   /* ***hooks initializations above this***  */
 
   /* ***state initializations above this***  */
@@ -56,7 +55,7 @@ export default function SearchPage() {
     <section className={styles["SearchPage-container"]}>
       <PackageSearchInput />
       <ResultSortSelect status={status} totalItems={totalItems} />
-      <ResultList data={data} status={status} error={error} />
+      <ResultList data={data} status={status} error={error} code={code} />
       <ResultListPagination status={status} totalItems={totalItems} />
     </section>
   );
